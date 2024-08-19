@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import Dashboard from './components/Dashboard';
+import { FinancialDataProvider } from './context/FinancialDataContext';
+import { TransactionProvider } from './context/TransactionContext';
+import { CategoryProvider } from './context/CategoryContext';
+import { FilterProvider } from './context/FilterContext';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FinancialDataProvider>
+      <TransactionProvider>
+        <CategoryProvider>
+          <FilterProvider>
+            <div className="App">
+              <Dashboard />
+            </div>
+          </FilterProvider>
+        </CategoryProvider>
+      </TransactionProvider>
+    </FinancialDataProvider>
   );
 }
 
